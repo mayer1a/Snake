@@ -10,10 +10,11 @@
 			//point1.Draw();
 			//point2.Draw();
 
-			HorizontalLine horizontalLineTop = new(2, 20, 1, '-');
-			HorizontalLine horizontalLineBottom = new(2, 20, 20, '-');
-			VerticalLine verticalLineLeft = new(1, 18, 1, '|');
-			VerticalLine verticalLineRight = new(1, 18, 20, '|');
+			//Отрисовка рамки игрового поля 
+			HorizontalLine horizontalLineTop = new(2, 20, 1, '•');
+			HorizontalLine horizontalLineBottom = new(2, 20, 20, '•');
+			VerticalLine verticalLineLeft = new(1, 18, 1, '•');
+			VerticalLine verticalLineRight = new(1, 18, 20, '•');
 
 			horizontalLineTop.DrawLines();
 			horizontalLineBottom.DrawLines();
