@@ -2,23 +2,23 @@
 
 namespace Snake
 {
-    public class Point
-    {
-        public int CordX { get; set; }
-        public int CordY { get; set; }
-        public char Symb { get; init; }
+	public class Point
+	{
+		public int XCord { get; set; }
+		public int YCord { get; set; }
+		public char Symb { get; init; }
 
-        public Point(int cordX, int cordY, char symb)
-        {
-            CordX = cordX;
-            CordY = cordY;
-            Symb = symb;
-        }
-        
-        public void Draw ()
-        {
-            Console.SetCursorPosition(CordX, CordY);
-            Console.Write(Symb);
-        }
-    }
+		public Point(int xCord, int yCord, char symb)
+		{
+			XCord = xCord;
+			YCord = yCord;
+			Symb = symb;
+		}
+
+		public void Draw()
+		{
+			Console.SetCursorPosition(XCord, YCord);
+			Console.Write(Symb);
+		}
+	}
 }

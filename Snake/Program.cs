@@ -1,35 +1,24 @@
-﻿using System.Collections.Generic;
-
-namespace Snake
+﻿namespace Snake
 {
     class Program
-    {
-        static void Main(string[] args)
-        {
-            List<char> charsList = new();
+	{
+		static void Main(string[] args)
+		{
+			//Point point1 = new(1, 3, '*');
+			//Point point2 = new(3, 4, '#');
 
-            charsList.Add('*');
-            charsList.Add('#');
-            charsList.Add('&');
-            charsList.Add('@');
+			//point1.Draw();
+			//point2.Draw();
 
-            Point point1 = new(1, 3, charsList[0]);
-            Point point2 = new(3, 4, charsList[1]);
-            Point point3 = new(3, 7, charsList[2]);
-            Point point4 = new(4, 6, charsList[3]);
+			HorizontalLine horizontalLineTop = new(2, 20, 1, '-');
+			HorizontalLine horizontalLineBottom = new(2, 20, 20, '-');
+			VerticalLine verticalLineLeft = new(1, 18, 1, '|');
+			VerticalLine verticalLineRight = new(1, 18, 20, '|');
 
-            List<Point> pointsList = new();
-            
-            pointsList.Add(point1);
-            pointsList.Add(point2);
-            pointsList.Add(point3);
-            pointsList.Add(point4);
-
-            point1.Draw();
-            point2.Draw();
-            point3.Draw();
-            point4.Draw();
-
-        }
-    }
+			horizontalLineTop.DrawLines();
+			horizontalLineBottom.DrawLines();
+			verticalLineLeft.DrawLines();
+			verticalLineRight.DrawLines();
+		}
+	}
 }
