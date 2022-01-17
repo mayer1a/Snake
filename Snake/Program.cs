@@ -6,23 +6,12 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            int x1 = 1;
-            int y1 = 3;
-            char symb1 = '*';
+            Point point1 = new(1, 3, '*');
 
-            DrawSymb(x1, y1, symb1);
+            Point point2 = new(3, 4, '#');
 
-            int x2 = 4;
-            int y2 = 5;
-            char symb2 = '#';
-
-            DrawSymb(x2, y2, symb2);
-        }
-
-        static void DrawSymb(int x, int y, char symb)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(symb);
+            point1.Draw();
+            point2.Draw();
         }
     }
 }
