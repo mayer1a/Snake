@@ -1,25 +1,44 @@
-﻿namespace Snake
+﻿using System.Threading;
+
+namespace Snake
 {
     class Program
 	{
 		static void Main(string[] args)
 		{
-			//Point point1 = new(1, 3, '*');
 			//Point point2 = new(3, 4, '#');
 
-			//point1.Draw();
-			//point2.Draw();
-
-			//Отрисовка рамки игрового поля 
-			HorizontalLine horizontalLineTop = new(2, 20, 1, '•');
-			HorizontalLine horizontalLineBottom = new(2, 20, 20, '•');
-			VerticalLine verticalLineLeft = new(1, 18, 1, '•');
-			VerticalLine verticalLineRight = new(1, 18, 20, '•');
+			// Отрисовка рамки игрового поля 
+			HorizontalLine horizontalLineTop = new(0, 78, 0, '•');
+			HorizontalLine horizontalLineBottom = new(0, 78, 36, '•');
+			VerticalLine verticalLineLeft = new(0, 36, 0, '•');
+			VerticalLine verticalLineRight = new(0, 36, 78, '•');
 
 			horizontalLineTop.DrawLines();
 			horizontalLineBottom.DrawLines();
 			verticalLineLeft.DrawLines();
 			verticalLineRight.DrawLines();
+
+			// Отрисовка змейки
+			Point startPoint = new(4, 5, '*');
+			Snake snake = new(startPoint, length: 4, Direction.RIGHT);
+			snake.DrawLines();
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
+			snake.Move();
+			Thread.Sleep(300);
 		}
 	}
 }
