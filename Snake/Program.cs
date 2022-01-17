@@ -6,8 +6,6 @@ namespace Snake
 	{
 		static void Main(string[] args)
 		{
-			//Point point2 = new(3, 4, '#');
-
 			// Отрисовка рамки игрового поля 
 			HorizontalLine horizontalLineTop = new(0, 78, 0, '•');
 			HorizontalLine horizontalLineBottom = new(0, 78, 36, '•');
