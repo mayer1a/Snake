@@ -13,7 +13,6 @@ namespace Snake
             CordY = cordY;
             Symb = symb;
         }
-
         
         public void Draw ()
         {
