@@ -11,7 +11,7 @@ namespace Snake
 			PointsList = new();
 		}
 
-		public void DrawLines()
+        public virtual void DrawObject()
 		{
 			foreach (Point p in PointsList)
 			{

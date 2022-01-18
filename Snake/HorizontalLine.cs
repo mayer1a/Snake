@@ -1,4 +1,6 @@
-﻿namespace Snake
+﻿using System;
+
+namespace Snake
 {
     class HorizontalLine : Figure
 	{
@@ -9,6 +11,15 @@
 				Point point = new(xCord, yCord, symb);
 				PointsList.Add(point);
 			}
+		}
+
+		public override void DrawObject()
+		{
+			Console.ForegroundColor = ConsoleColor.Green;
+
+			base.DrawObject();
+
+			Console.ForegroundColor = ConsoleColor.White;
 		}
 	}
 } 

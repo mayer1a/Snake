@@ -6,6 +6,7 @@ namespace Snake
     class Snake : Figure
 	{
 		private Direction Direction { get; set; }
+		internal bool IsPlaying { get; set; } = true;
 
 		public Snake(Point tail, int length, Direction direction)
 		{
@@ -55,9 +56,28 @@ namespace Snake
 				case ConsoleKey.DownArrow or ConsoleKey.S:
 					Direction = Direction.DOWN;
 					break;
+				case ConsoleKey.Escape:
+					IsPlaying = false;
+					break;
 				default:
 					break;
 			}
 		}
+
+		internal bool Eat(Point food)
+        {
+			Point head = GetNextPoint();
+
+			if(head.IsHit(food))
+            {
+				food.Symb = head.Symb;
+				PointsList.Add(food);
+				return true;
+            }
+			else
+            {
+				return false;
+            }
+        }
     }
 }

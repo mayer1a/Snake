@@ -4,9 +4,9 @@ namespace Snake
 {
 	class Point
 	{
-		private int XCord { get; set; }
-		private int YCord { get; set; }
-		private char Symb { get; set; }
+		internal int XCord { get; set; }
+		internal int YCord { get; set; }
+		internal char Symb { get; set; }
 
 		public Point(int xCord, int yCord, char symb)
 		{
@@ -58,6 +58,11 @@ namespace Snake
         public override string ToString()
         {
             return XCord + ", " + YCord + ", " + Symb;
+        }
+
+		internal bool IsHit(Point point)
+        {
+			return point.XCord == XCord && point.YCord == YCord;
         }
     }
 }

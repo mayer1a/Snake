@@ -13,27 +13,44 @@ namespace Snake
 			VerticalLine verticalLineLeft = new(0, 36, 0, '•');
 			VerticalLine verticalLineRight = new(0, 36, 78, '•');
 
-			horizontalLineTop.DrawLines();
-			horizontalLineBottom.DrawLines();
-			verticalLineLeft.DrawLines();
-			verticalLineRight.DrawLines();
+			horizontalLineTop.DrawObject();
+			horizontalLineBottom.DrawObject();
+			verticalLineLeft.DrawObject();
+			verticalLineRight.DrawObject();
 
 			// Отрисовка змейки
 			Point startPoint = new(4, 5, '*');
 			Snake snake = new(startPoint, length: 4, Direction.RIGHT);
-			snake.DrawLines();
+			snake.DrawObject();
 
-			while (true)
+			FoodCreator foodCreator = new(80, 37, '+');
+			Point food = foodCreator.CreateFood();
+			food.Draw();
+
+			while (snake.IsPlaying)
             {
+                if (snake.Eat(food))
+                {
+					food = foodCreator.CreateFood();
+					food.Draw();
+                }
+				else
+                {
+					snake.Move();
+                }
+
 				if (Console.KeyAvailable)
                 {
 					ConsoleKeyInfo keyInfo = Console.ReadKey();
 					snake.HandleKey(keyInfo.Key);
                 }
 
-				Thread.Sleep(100);
+				Thread.Sleep(300);
 				snake.Move();
             }
+
+			Console.Clear();
+
 		}
 	}
 }
