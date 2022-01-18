@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -21,22 +22,18 @@ namespace Snake
 			Point startPoint = new(4, 5, '*');
 			Snake snake = new(startPoint, length: 4, Direction.RIGHT);
 			snake.DrawLines();
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
-			snake.Move();
-			Thread.Sleep(300);
+
+			while (true)
+            {
+				if (Console.KeyAvailable)
+                {
+					ConsoleKeyInfo keyInfo = Console.ReadKey();
+					snake.HandleKey(keyInfo.Key);
+                }
+
+				Thread.Sleep(100);
+				snake.Move();
+            }
 		}
 	}
 }

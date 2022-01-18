@@ -5,7 +5,7 @@ namespace Snake
 {
     class Snake : Figure
 	{
-		private Direction Direction { get; }
+		private Direction Direction { get; set; }
 
 		public Snake(Point tail, int length, Direction direction)
 		{
@@ -38,5 +38,26 @@ namespace Snake
 
 			return nextPoint;
         }
+
+		internal void HandleKey (ConsoleKey consoleKey)
+        {
+            switch (consoleKey)
+			{
+				case ConsoleKey.LeftArrow or ConsoleKey.A:
+					Direction = Direction.LEFT;
+					break;
+				case ConsoleKey.RightArrow or ConsoleKey.D:
+					Direction = Direction.RIGHT;
+					break;
+				case ConsoleKey.UpArrow or ConsoleKey.W:
+					Direction = Direction.UP;
+					break;
+				case ConsoleKey.DownArrow or ConsoleKey.S:
+					Direction = Direction.DOWN;
+					break;
+				default:
+					break;
+			}
+		}
     }
 }

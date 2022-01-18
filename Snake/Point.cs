@@ -39,10 +39,10 @@ namespace Snake
 					XCord += offset;
 					break;
 				case Direction.UP:
-					YCord += offset;
+					YCord -= offset;
 					break;
 				case Direction.DOWN:
-					YCord -= offset;
+					YCord += offset;
 					break;
                 default:
                     break;
