@@ -3,51 +3,50 @@ using System.Threading;
 
 namespace Snake
 {
-    class Program
+	class Program
 	{
 		static void Main(string[] args)
 		{
-			// Отрисовка рамки игрового поля 
-			HorizontalLine horizontalLineTop = new(0, 78, 0, '•');
-			HorizontalLine horizontalLineBottom = new(0, 78, 36, '•');
-			VerticalLine verticalLineLeft = new(0, 36, 0, '•');
-			VerticalLine verticalLineRight = new(0, 36, 78, '•');
-
-			horizontalLineTop.DrawObject();
-			horizontalLineBottom.DrawObject();
-			verticalLineLeft.DrawObject();
-			verticalLineRight.DrawObject();
+			// Отрисовка рамки игрового поля
+			Walls walls = new(80, 35);
+			walls.Draw();
 
 			// Отрисовка змейки
-			Point startPoint = new(4, 5, '*');
+			Point startPoint = new(10, 10, '*');
 			Snake snake = new(startPoint, length: 4, Direction.RIGHT);
-			snake.DrawObject();
+			snake.Draw();
 
-			FoodCreator foodCreator = new(80, 37, '+');
+			FoodCreator foodCreator = new(80, 35, '+');
 			Point food = foodCreator.CreateFood();
-			food.Draw();
+			food.DrawObject();
 
 			while (snake.IsPlaying)
-            {
-                if (snake.Eat(food))
+			{
+                if (walls.IsHit(snake) || snake.IsHitTail())
                 {
-					food = foodCreator.CreateFood();
-					food.Draw();
-                }
-				else
-                {
-					snake.Move();
+                    break;
                 }
 
-				if (Console.KeyAvailable)
-                {
-					ConsoleKeyInfo keyInfo = Console.ReadKey();
-					snake.HandleKey(keyInfo.Key);
-                }
+                if (snake.Eat(food))
+				{
+					food = foodCreator.CreateFood();
+					food.DrawObject();
+				}
+				else
+				{
+					snake.Move();
+				}
 
 				Thread.Sleep(300);
+
+				if (Console.KeyAvailable)
+				{
+					ConsoleKeyInfo keyInfo = Console.ReadKey();
+					snake.HandleKey(keyInfo.Key);
+				}
+
 				snake.Move();
-            }
+			}
 
 			Console.Clear();
 

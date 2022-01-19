@@ -1,22 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Snake
 {
     class Figure
 	{
-		protected List<Point> PointsList { get; }
+        protected List<Point> PointsList;
 
 		public Figure()
 		{
-			PointsList = new();
 		}
 
-        public virtual void DrawObject()
+        public virtual void Draw()
 		{
-			foreach (Point p in PointsList)
+			foreach (Point point in PointsList)
 			{
-				p.Draw();
+				point.DrawObject();
 			}
 		}
+
+		internal bool IsHit(Figure figure)
+        {
+            foreach (var point in PointsList)
+            {
+                if (figure.IsHit(point))
+                {
+					return true;
+                }
+            }
+
+			return false;
+        }
+
+		private bool IsHit(Point point)
+        {
+            foreach (var p in PointsList)
+            {
+                if (p.IsHit(point))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 	}
 }

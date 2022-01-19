@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Snake
@@ -10,6 +11,7 @@ namespace Snake
 
 		public Snake(Point tail, int length, Direction direction)
 		{
+			PointsList = new List<Point>();
 			Direction = direction;
 
 			for(int point = 0; point < length; point++)
@@ -24,11 +26,27 @@ namespace Snake
         {
 			Point tail = PointsList.First();
 			PointsList.Remove(tail);
+
 			Point head = GetNextPoint();
 			PointsList.Add(head);
 
 			tail.Clear();
-			head.Draw();
+			head.DrawObject();
+        }
+
+        internal bool IsHitTail()
+        {
+			var head = PointsList.Last();
+
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                if (head.IsHit(PointsList[i]))
+                {
+					return true;
+                }
+            }
+
+			return false;
         }
 
         private Point GetNextPoint()

@@ -4,9 +4,9 @@ namespace Snake
 {
 	class Point
 	{
-		internal int XCord { get; set; }
-		internal int YCord { get; set; }
-		internal char Symb { get; set; }
+		public int XCord { get; set; }
+		public int YCord { get; set; }
+		public char Symb { get; set; }
 
 		public Point(int xCord, int yCord, char symb)
 		{
@@ -22,7 +22,7 @@ namespace Snake
 			Symb = point.Symb;
         }
 
-		public void Draw()
+		public void DrawObject()
 		{
 			Console.SetCursorPosition(XCord, YCord);
 			Console.Write(Symb);
@@ -52,7 +52,7 @@ namespace Snake
         internal void Clear()
         {
             Symb = ' ';
-			Draw();
+			DrawObject();
         }
 
         public override string ToString()

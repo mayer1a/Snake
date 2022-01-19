@@ -2,13 +2,13 @@
 
 namespace Snake
 {
-	public class FoodCreator
+	class FoodCreator
 	{
-		private int MapWidth { get; }
-		private int MapHeight { get; }
-		private char Symb { get; }
+		public int MapWidth { get; }
+		public int MapHeight { get; }
+		public char Symb { get; }
 
-        readonly Random random = new();
+        Random random = new();
 
 		public FoodCreator(int mapWidth, int mapHeight, char symb)
 		{
@@ -17,7 +17,7 @@ namespace Snake
 			Symb = symb;
 		}
 
-		internal Point CreateFood()
+		public Point CreateFood()
         {
 			int xCord = random.Next(2, MapWidth - 2);
 			int yCord = random.Next(2, MapHeight - 2);
