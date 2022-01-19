@@ -4,9 +4,9 @@ namespace Snake
 {
 	class FoodCreator
 	{
-		public int MapWidth { get; }
-		public int MapHeight { get; }
-		public char Symb { get; }
+		private int MapWidth { get; }
+		private int MapHeight { get; }
+		private char Symb { get; }
 
         Random random = new();
 
